@@ -1,1 +1,1 @@
-Feito a parte de login manualmente, sem utilização do identity
+Foi criado o banco de dados, para poder fazer o login do usuário.
