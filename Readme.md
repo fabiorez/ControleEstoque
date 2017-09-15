@@ -1,1 +1,1 @@
-Foi criado o banco de dados, para poder fazer o login do usuário.
+Feito o crud com acesso ao banco de dados via ADO
