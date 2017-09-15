@@ -1,1 +1,1 @@
-Feito o crud com acesso ao banco de dados via ADO
+v0.7_crud - Feito o crud com acesso ao banco de dados via ADO
