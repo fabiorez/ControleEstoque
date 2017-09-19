@@ -2,29 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ControleEstoque.Web.Controllers
 {
     public class CadastroController : Controller
     {
-        private static List<GrupoProdutoModel> _listaGrupoProduto = new List<GrupoProdutoModel>()
-        {
-            new GrupoProdutoModel() {Id = 1, Nome="Mouse", Ativo = true},
-            new GrupoProdutoModel() {Id = 2, Nome="Teclado", Ativo = true},
-            new GrupoProdutoModel() {Id = 3, Nome="Computador", Ativo = true},
-            new GrupoProdutoModel() {Id = 4, Nome="Monitor", Ativo = true},
-            new GrupoProdutoModel() {Id = 5, Nome="Caixa de som", Ativo = false},
-        };
-
         [Authorize]
         public ActionResult GrupoProduto()
         {
             return View(GrupoProdutoModel.RecuperarLista());
         }
 
+        [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult RecuperarGrupoProduto(int id)
         {
             return Json(GrupoProdutoModel.RecuperarPeloId(id));
@@ -32,6 +24,7 @@ namespace ControleEstoque.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult SalvarGrupoProduto(GrupoProdutoModel model)
         {
             var resultado = "OK";
@@ -69,7 +62,9 @@ namespace ControleEstoque.Web.Controllers
             return Json(new { Resultado = resultado, Mensagens = mensagens, IdSalvo = idSalvo });
         }
 
+        [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult ExcluirGrupoProduto(int id)
         {
             return Json(GrupoProdutoModel.ExcluirPeloId(id));
