@@ -21,17 +21,17 @@ namespace ControleEstoque.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel login, string returnUrl)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(login);
             }
 
-            var achou = (UsuarioModel.ValidarUsuario(login.Usuario, login.Senha));
+            var usuario = (UsuarioModel.ValidarUsuario(login.Usuario, login.Senha));
 
-            if(achou)
+            if (usuario != null)
             {
-                FormsAuthentication.SetAuthCookie(login.Usuario, login.LembrarMe);
-                if(Url.IsLocalUrl(returnUrl))
+                FormsAuthentication.SetAuthCookie(usuario.Nome, login.LembrarMe);
+                if (Url.IsLocalUrl(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
